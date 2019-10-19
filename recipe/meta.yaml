@@ -1,0 +1,22 @@
+package:
+    name: tempo
+    version: {{ os.environ.get('VERSION') }} 
+
+source:
+    # Assumes source has been checked out here:
+    path: ../tempo
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - {{ compiler('fortran') }}
+        - {{ compiler('c') }}
+        - autoconf
+        - automake
+        - libtool
+    host:
+        - libopenblas
+    run:
+        - libopenblas
