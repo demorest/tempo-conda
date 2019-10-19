@@ -3,7 +3,7 @@ compiler:
     - gcc
 os:
     - linux
-      #- osx
+    - osx
 before_install:
     - MINICONDA_VERSION=latest
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
@@ -30,7 +30,7 @@ install:
 script:
     - tempo -f tempo/tzpar/1937+21.par -ZPSR=1937+21 -ZSITE=1
     - test -e polyco.dat
-#after_success:
-#    - export PKGFILE=$(conda build recipe --output)
-#    - conda install anaconda-client
-#    - anaconda -t $CONDA_UPLOAD_TOKEN upload -u demorest --force $PKGFILE
+after_success:
+    - export PKGFILE=$(conda build recipe --output)
+    - conda install anaconda-client
+    - anaconda -t $CONDA_UPLOAD_TOKEN upload -u demorest --force $PKGFILE
