@@ -17,6 +17,6 @@ requirements:
         - automake
         - libtool
     host:
-        - libopenblas
+        - openblas
     run:
-        - libopenblas
+        - openblas

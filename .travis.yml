@@ -21,14 +21,15 @@ before_install:
 install:
     - git clone --depth=1 http://git.code.sf.net/p/tempo/tempo tempo
     # Could get the number of commits on a given date like:
-    # git -C epsic log --format="%cd" --date=short | uniq -c | head -n1
+    # git -C tempo log --format="%cd" --date=short | uniq -c | head -n1
     # Then split it up inside the meta.yaml.
     - export VERSION=$(git -C ./tempo log -1 --format='%cd' --date=short | sed 's/-/./g')
-    - conda build recipe
+    - conda build ./recipe
     - conda activate
     - conda install tempo --use-local
 script:
-    - tempo
+    - tempo -f tempo/tzpar/1937+21.par -ZPSR=1937+21 -ZSITE=1
+    - test -e polyco.dat
 #after_success:
 #    - export PKGFILE=$(conda build recipe --output)
 #    - conda install anaconda-client
