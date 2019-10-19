@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./prepare
+source ./prepare
 ./configure --prefix=$PREFIX CFLAGS='-g -O2' FFLAGS='-g -O2'
 
 make
