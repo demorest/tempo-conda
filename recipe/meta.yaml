@@ -17,6 +17,7 @@ requirements:
         - automake
         - libtool
     host:
-        - openblas
+        - libblas
     run:
-        - openblas
+        - libblas
+        - tempo-clockfiles

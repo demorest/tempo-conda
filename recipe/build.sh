@@ -13,7 +13,8 @@ tempodir=$PREFIX/share/tempo
 mkdir -p $tempodir
 cat tempo.cfg.in | sed 's%@abs_top_srcdir@%'$tempodir'%' > $tempodir/tempo.cfg
 cp -a tempo.hlp $tempodir
-cp -a clock $tempodir
+# clock files are in a separate package now:
+#cp -a clock $tempodir
 cp -a ephem $tempodir
 cp -a obsys.dat $tempodir
 
